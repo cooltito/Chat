@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var socket = io.connect("http://localhost");
+	var socket = io.connect("http://ec2-54-245-32-226.us-west-2.compute.amazonaws.com");
 	
 	socket.on("welcome", function(data){
 		$("#messageDiv").html(data.username + " has joined the chat");
