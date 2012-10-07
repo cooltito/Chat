@@ -35,7 +35,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('register', function (data) {
 	if(users[data.nick]){
 		console.log("Duplicate user : "+data.nick);
-		socket.emit("duplicate");
+		socket.emit("error", "Nickname already in use. Please choose another nick.");
 	} else {
 		socket.set("nickname", data.nick, function(){
 			socket.set("color", data.color,function(){
@@ -46,6 +46,18 @@ io.sockets.on('connection', function (socket) {
 	    io.sockets.emit('welcome', {username : data.nick});
 	    socket.emit("successEntry");
 	}
+  });
+  
+  socket.on("personalMessage", function (data) {
+  	socket.get("nickname", function (err, name) {
+  		if(data.to === name){
+  			socket.emit("error", "Can't send personal message to yourself");
+  		} else {
+  			io.sockets.socket(users[data.to]).emit("personalMsg", {from : name, message : data.message});
+  			socket.emit("personalMsg", {to : data.to, from : name, message : data.message});
+  		}
+  	});
+  	
   });
 
   socket.on('disconnect', function () {

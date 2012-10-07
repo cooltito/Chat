@@ -3,7 +3,7 @@
 body {
 	font-family: Monaco, Consolas, "Lucida Console", monospace;
 	font-stretch: normal;
-	font-size: 17px;
+	font-size: 1.1em;
 }
 
 #messageDiv,#nickDiv,#groupChat,#messageEnter {
@@ -13,6 +13,7 @@ body {
 
 #messageEnter {
 	width: 50%;
+	text-align: center;
 }
 
 #messageDiv {
@@ -24,7 +25,7 @@ body {
 	padding: 5px;
 	border: 2px solid #000000;
 	border-radius: 3px;
-	width: 70%;
+	width: 50%;
 	height: 300px;
 	overflow: auto;
 }
@@ -37,7 +38,7 @@ body {
 	text-align: center;
 }
 
-button {
+.myButton {
 	background-color: #007D9A;
 	border: 2px solid #007D9A;
 	border-radius: 3px;
@@ -49,7 +50,7 @@ button {
 	-moz-transition: background-color 1s, border 1s;
 }
 
-button:hover {
+.myButton:hover {
 	background-color: #4D90FE;
 	border: 2px solid #4D90FE;
 	border-radius: 3px;
@@ -65,7 +66,7 @@ input[type=text] {
 	width: 70%;
 	border: 2px solid #5A5050;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 5px 0 5px 0;
 	box-shadow: 1px 1px 1px #5A5050;
 }
 
@@ -79,4 +80,26 @@ input[type=text] {
 	width: 60%;
 	display: inline-block;
 	text-align: left;
+}
+
+.nickSpan {
+	font-weight:bold;
+	cursor: pointer;
+}
+
+.personalChatDiv {
+	height: 100%;
+	width: 100%;
+}
+
+.personalChatDisplay {
+	height: 100px;
+	width: 100%;
+	border: 2px solid #5A5050;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+.personalChatInput input{
+	width: 100%;
 }
