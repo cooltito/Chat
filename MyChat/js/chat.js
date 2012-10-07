@@ -51,4 +51,5 @@ $(document).ready(function(){
 var submitMessage = function(socket){
 	var msg = $("#messageInput").val();
 	socket.emit("message", msg);
+	var msg = $("#messageInput").val("");
 };
