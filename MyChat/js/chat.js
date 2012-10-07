@@ -8,7 +8,9 @@ $(document).ready(function(){
 	});
 		
 	socket.on("broadcast", function(data){
-		$("#groupChat").append("<div><span style='font-weight:bold; color:"+data.color+"'>"+data.from+"</span> : "+data.message+"</div>");	
+		var chatDiv = $("#groupChat");
+		$(chatDiv).append("<div><span style='font-weight:bold; color:"+data.color+"'>"+data.from+"</span> : "+data.message+"</div>");
+		chatDiv[0].scrollTop = chatDiv[0].scrollHeight;
 	});
 	
 	socket.on("duplicate", function(){
