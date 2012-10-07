@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 	var url = window.location.href.split("/home")[0];
 	
@@ -35,18 +37,18 @@ $(document).ready(function(){
 	});
 	
 	$("#submitMessage").bind("click", function(){
-		submitMessage();
+		submitMessage(socket);
 	});
 	
 	$("#messageInput").bind("keypress", function(ev){
 		var keyCode = ev.keyCode;
 		if(keyCode == 13){
-			submitMessage();
+			submitMessage(socket);
 		}
 	});
 });
 
-var submitMessage = function(){
+var submitMessage = function(socket){
 	var msg = $("#messageInput").val();
 	socket.emit("message", msg);
 };
