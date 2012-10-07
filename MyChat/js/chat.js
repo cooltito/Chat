@@ -35,7 +35,18 @@ $(document).ready(function(){
 	});
 	
 	$("#submitMessage").bind("click", function(){
-		var msg = $("#messageInput").val();
-		socket.emit("message", msg);		
+		submitMessage();
+	});
+	
+	$("#messageInput").bind("keypress", function(ev){
+		var keyCode = ev.keyCode;
+		if(keyCode == 13){
+			submitMessage();
+		}
 	});
 });
+
+var submitMessage = function(){
+	var msg = $("#messageInput").val();
+	socket.emit("message", msg);
+};
