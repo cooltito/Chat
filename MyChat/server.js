@@ -22,20 +22,28 @@ var users = {};
 io.sockets.on('connection', function (socket) {
 
   socket.on('message', function (message) {
-    console.log("Message received : " + message + " from " + user);
-    io.sockets.emit('broadcast', {from : user, message : message});
+
+    socket.get("nickname", function(err, name){
+    	socket.get("color", function(err, color){
+    	    console.log("Message received : " + message + " from " + name);
+    	    io.sockets.emit('broadcast', {from : name, message : message, color : color});
+    	});
+    });
+    
   });
 
-  socket.on('register', function (username) {
-	if(users[username]){
-		console.log("Duplicate user : "+username);
+  socket.on('register', function (data) {
+	if(users[data.nick]){
+		console.log("Duplicate user : "+data.nick);
 		socket.emit("duplicate");
 	} else {
-		socket.set("nickname", username, function(){
-			console.log("User " + username + " joined");
+		socket.set("nickname", data.nick, function(){
+			socket.set("color", data.color,function(){
+				console.log("User " + data.nick + " joined");
+			});
 		});
-	    users[username] = socket.id;
-	    io.sockets.emit('welcome', {username : username});
+	    users[data.nick] = socket.id;
+	    io.sockets.emit('welcome', {username : data.nick});
 	    socket.emit("successEntry");
 	}
   });

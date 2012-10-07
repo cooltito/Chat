@@ -8,7 +8,7 @@ $(document).ready(function(){
 	});
 		
 	socket.on("broadcast", function(data){
-		$("#groupChat").append("<div>"+data.from+" : "+data.message+"</div>");	
+		$("#groupChat").append("<div><span style='font-weight:bold; color:"+data.color+"'>"+data.from+"</span> : "+data.message+"</div>");	
 	});
 	
 	socket.on("duplicate", function(){
@@ -28,7 +28,8 @@ $(document).ready(function(){
 	
 	$("#submitNick").bind("click", function(){
 		var nick = $("#nick").val();
-		socket.emit("register", nick);
+		var color = $("#color").val();
+		socket.emit("register", {nick : nick, color : color});
 	});
 	
 	$("#submitMessage").bind("click", function(){
