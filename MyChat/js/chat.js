@@ -1,20 +1,34 @@
 $(document).ready(function(){
-	var socket = io.connect("http://ec2-54-245-32-226.us-west-2.compute.amazonaws.com");
+	var url = window.location.href.split("/home")[0];
+	
+	var socket = io.connect(url);
 	
 	socket.on("welcome", function(data){
-		$("#messageDiv").html(data.username + " has joined the chat");
+		$("#messageDiv").html("<b>" + data.username + "</b> has joined the chat");
 	});
 		
 	socket.on("broadcast", function(data){
 		$("#groupChat").append("<div>"+data.from+" : "+data.message+"</div>");	
 	});
 	
+	socket.on("duplicate", function(){
+		$("#messageDiv").html("Nickname already in use. Please choose another nick.");
+	});
+	
+	socket.on("leave", function(data){
+		$("#messageDiv").html("<b>" + data.username + "</b> has left the chat");
+	});
+	
+	socket.on("successEntry", function(){
+		$("#nickDiv").fadeOut(1000, function(){
+			$("#groupChat").fadeIn();
+			$("#messageEnter").fadeIn();
+		});	
+	});
+	
 	$("#submitNick").bind("click", function(){
 		var nick = $("#nick").val();
 		socket.emit("register", nick);
-		$("#nickDiv").fadeOut();
-		$("#groupChat").fadeIn();
-		$("#messageEnter").fadeIn();		
 	});
 	
 	$("#submitMessage").bind("click", function(){

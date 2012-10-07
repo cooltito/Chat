@@ -1,12 +1,67 @@
 @CHARSET "ISO-8859-1";
 
-#messageDiv, #nickDiv, #groupChat, #messageEnter {
-	margin: 0px auto;
+body {
+	font-family: Monaco, Consolas, "Lucida Console", monospace;
+	font-stretch: normal;
+	font-size: 17px;
+}
+
+#messageDiv,#nickDiv,#groupChat,#messageEnter {
+	margin: 0 auto;
+	margin-bottom: 2%;
+}
+
+#messageEnter {
+	width: 50%;
+}
+
+#messageDiv {
+	width: 500px;
+	text-align: center;
 }
 
 #groupChat {
+	padding: 5px;
 	border: 2px solid #000000;
 	border-radius: 3px;
 	width: 70%;
-	height: 500px;
+	height: 300px;
+	overflow: auto;
+}
+
+#nickDiv {
+	width: 20%;
+	border: 2px solid #5A5050;
+	border-radius: 5px;
+	padding: 2%;
+}
+
+button {
+	background-color: #007D9A;
+	border: 2px solid #007D9A;
+	border-radius: 3px;
+	font-weight: bold;
+	color: white;
+	padding: 5px;
+	box-shadow: 2px 2px 2px black;
+	-webkit-transition: background-color 1s, border 1s;
+}
+
+button:hover {
+	background-color: #4D90FE;
+	border: 2px solid #4D90FE;
+	border-radius: 3px;
+	font-weight: bold;
+	color: white;
+	padding: 5px;
+	box-shadow: 2px 2px 2px black;
+	
+}
+
+input[type=text] {
+	width: 70%;
+	border: 2px solid #5A5050;
+	border-radius: 5px;
+	padding: 5px;
+	box-shadow: 1px 1px 1px #5A5050;
 }
