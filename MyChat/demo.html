@@ -172,12 +172,12 @@
 	});
 	
 	var drawGraph = function(){
-		$.plot($("#placeholder"), [ { data: dataX, label: "dummyX"} ], {
+		$.plot($("#placeholder"), [ {color: "33CC00", data: dataX, label: "dummyX"} ], {
             series: {
-                lines: { show: true },
+                lines: { show: true, fill:true, fillColor:"#66CC66" },
                 points: { show: true }
             },
-            grid: { hoverable: true, clickable: true },
+            grid: { hoverable: true, clickable: true, backgroundColor : "#000000" },
             yaxis : {min:0, max : 120}
           }			
 		)
