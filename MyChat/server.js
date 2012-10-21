@@ -17,6 +17,10 @@ app.get('/home', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
+app.get('/demo', function (req, res) {
+  res.sendfile(__dirname + '/demo.html');
+});
+
 var users = {};
 
 io.sockets.on('connection', function (socket) {
