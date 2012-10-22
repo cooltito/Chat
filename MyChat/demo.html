@@ -7,6 +7,7 @@
 <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="/js/jquery.knob.js"></script>
 <script type="text/javascript" src="/js/jquery.flot.js"></script>
+<script type="text/javascript" src="/js/jquery.flot.crosshair.js"></script>
 <script type="text/javascript">
 
 	var dataX = [[10,75],[20,20],[30,30],[40,10],[50,9],[60,50]];
@@ -167,20 +168,34 @@
 			    ).trigger('change');
 			}
 		});
-		drawGraph();
+		var linePlot = drawGraph("placeholder1", "line");
+		var barPlot = drawGraph("placeholder2", "bar");
+		$("#placeholder1").bind("plothover",  function (event, pos, item) {        
+			barPlot.setCrosshair({x: pos.x})
+		});
+		
+		$("#placeholder2").bind("plothover",  function (event, pos, item) {        
+			linePlot.setCrosshair({x: pos.x})
+		});
 
 	});
 	
-	var drawGraph = function(){
-		$.plot($("#placeholder"), [ {color: "33CC00", data: dataX, label: "dummyX"} ], {
-            series: {
-                lines: { show: true, fill:true, fillColor:"#66CC66" },
-                points: { show: true }
-            },
-            grid: { hoverable: true, clickable: true, backgroundColor : "#000000" },
-            yaxis : {min:0, max : 120}
+	var drawGraph = function(placeholder, type){
+		var ser = {};
+		if(type === "line"){
+			ser.lines = { show: true, fill:true, fillColor:"#66CC66" };
+		} else if(type === "bar"){
+			ser.bars = { show: true, fill:true, fillColor:"#66CC66" };
+		}
+		ser.points = { show: false };
+		var plot = $.plot($("#"+placeholder), [ {color: "33CC00", data: dataX, label: "dummyX"} ], {
+            series: ser,
+            grid: { hoverable: true, clickable: true, backgroundColor : null, color : "#00FF00", show : true },
+            yaxis : {min:0, max : 120},
+            crosshair : {mode : "x", color : "#FFFFFF"}
           }			
 		)
+		return plot;
 	}
 </script>
 </body>
@@ -198,7 +213,8 @@
 	
 	<input type="text" value="50" class="dial" id="myinput6" />		
 	
-	<div id="placeholder"></div>
+	<div id="placeholder1" class="chart"></div>
+	<div id="placeholder2" class="chart"></div>
 
 
 </html>

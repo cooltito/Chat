@@ -1,6 +1,10 @@
 @CHARSET "ISO-8859-1";
 
-#placeholder {
-	width: 50%;
-	height: 300px;
+.chart{
+	width: 30%;
+	height: 200px;
+}
+
+body {
+	background: url('images/bg.jpg') repeat;
 }

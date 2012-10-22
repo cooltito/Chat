@@ -21,6 +21,10 @@ app.get('/demo', function (req, res) {
   res.sendfile(__dirname + '/demo.html');
 });
 
+app.get('/fusion', function (req, res) {
+  res.sendfile(__dirname + '/demoFusionCharts.html');
+});
+
 var users = {};
 
 io.sockets.on('connection', function (socket) {
