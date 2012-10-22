@@ -21,7 +21,8 @@
 			change : function(){
 				var fgColor;
 				dataX[0][1] = this.cv;
-				drawGraph();
+				drawGraph("placeholder1", "line");
+				drawGraph("placeholder2", "bar");
 				if(this.cv < 30){
 					fgColor = "#FFCC11";
 				} else if(this.cv >= 30 && this.cv <=80) {
@@ -47,7 +48,8 @@
 			fgColor : "#66CC66",
 			change : function(){
 				dataX[1][1] = this.cv;
-				drawGraph();
+				drawGraph("placeholder1", "line");
+				drawGraph("placeholder2", "bar");
 				if(this.cv < 30){
 					fgColor = "#FFCC11";
 				} else if(this.cv >= 30 && this.cv <=80) {
@@ -73,7 +75,8 @@
 			fgColor : "#66CC66",
 			change : function(){
 				dataX[2][1] = this.cv;
-				drawGraph();
+				drawGraph("placeholder1", "line");
+				drawGraph("placeholder2", "bar");
 				if(this.cv < 30){
 					fgColor = "#FFCC11";
 				} else if(this.cv >= 30 && this.cv <=80) {
@@ -99,7 +102,8 @@
 			fgColor : "#66CC66",
 			change : function(){
 				dataX[3][1] = this.cv;
-				drawGraph();
+				drawGraph("placeholder1", "line");
+				drawGraph("placeholder2", "bar");
 				if(this.cv < 30){
 					fgColor = "#FFCC11";
 				} else if(this.cv >= 30 && this.cv <=80) {
@@ -125,7 +129,8 @@
 			fgColor : "#66CC66",
 			change : function(){
 				dataX[4][1] = this.cv;
-				drawGraph();
+				drawGraph("placeholder1", "line");
+				drawGraph("placeholder2", "bar");
 				if(this.cv < 30){
 					fgColor = "#FFCC11";
 				} else if(this.cv >= 30 && this.cv <=80) {
@@ -151,7 +156,8 @@
 			fgColor : "#66CC66",
 			change : function(){
 				dataX[5][1] = this.cv;
-				drawGraph();
+				drawGraph("placeholder1", "line");
+				drawGraph("placeholder2", "bar");
 				if(this.cv < 30){
 					fgColor = "#FFCC11";
 				} else if(this.cv >= 30 && this.cv <=80) {
@@ -159,7 +165,7 @@
 				} else {
 					fgColor = "#FF0000";
 				}
-				$(this)
+				$("#myInput6")
 			    .trigger(
 			        'configure',
 			        {
